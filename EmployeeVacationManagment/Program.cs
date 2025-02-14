@@ -220,15 +220,15 @@ namespace EmployeeVacationManagment
         public static void GetAllEmployees(EFCoreDBContext context)
         {
             var employees = context.Employees
-                .AsNoTracking() // Improves performance by disabling change tracking
+                .AsNoTracking() 
                 .Select(e => new
                 {
                     e.EmployeeNumber,
                     e.Name,
-                    DepartmentName = e.Department.Name, // Assuming navigation property exists
+                    DepartmentName = e.Department.Name, 
                     e.Salary
                 })
-                .ToList(); // Executes the query and retrieves only required columns
+                .ToList(); 
 
             // Display employees
             foreach (var emp in employees)
